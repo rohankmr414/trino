@@ -49,7 +49,7 @@ queries that use it, but makes it unavailable to any new queries.
 ## `catalog.store`
 
 - **Type:** [](prop-type-string)
-- **Allowed values:** `file`, `memory`
+- **Allowed values:** `file`, `memory`, `jdbc`
 - **Default value:** `file`
 
 Requires [](prop-catalog-management) to be set to `dynamic`. When set to
@@ -58,7 +58,10 @@ catalog property files on the coordinator node. Trino server process requires
 write access in the catalog configuration directory. Existing catalog files are
 also read on the coordinator startup. When set to `memory`, catalog
 configuration is only managed in memory, and any existing files are ignored on
-startup.
+startup. When set to `jdbc`, catalog configurations are stored in a relational
+database (such as PostgreSQL), allowing for centralized management and high
+availability across multiple coordinators. JDBC store configuration is specified
+in `etc/catalog-store.properties`.
 
 ## `catalog.config-dir`
 

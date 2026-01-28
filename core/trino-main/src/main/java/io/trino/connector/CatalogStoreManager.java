@@ -56,6 +56,7 @@ public class CatalogStoreManager
         this.catalogStoreKind = requireNonNull(catalogStoreConfig.getCatalogStoreKind(), "catalogStoreKind is null");
         addCatalogStoreFactory(new InMemoryCatalogStoreFactory());
         addCatalogStoreFactory(new FileCatalogStoreFactory());
+        addCatalogStoreFactory(new JdbcCatalogStoreFactory());
     }
 
     public void addCatalogStoreFactory(CatalogStoreFactory catalogStoreFactory)
